@@ -60,6 +60,8 @@ def internet_speedtest():
         g.logger.debug("Download Speed: {} Mbps".format(g.download_speed / 1000000))
 
     except Exception as e:
+        g.upload_speed = 100000000
+        g.download_speed = 100000000
         g.ftp_upload_blocksize = 8192 * 1000
         g.ftp_download_blocksize = 8192 * 1000
         
@@ -84,7 +86,7 @@ async def initialize(ravenverse_token, graph_id=None):
 
     if not isLatestVersion('ravpy'):
         g.logger.debug("Please update ravpy to latest version...")
-        os._exit(1)
+#         os._exit(1)
 
     g.logger.debug("Initializing...")
     g.ravenverse_token = ravenverse_token
